@@ -5,7 +5,7 @@ from surprise.model_selection import cross_validate
 from joblib import dump
 import time 
 
-df = pd.read_csv('data.csv', header = None, names = ['Cust_Id', 'Rating'], usecols = [0,1])
+df = pd.read_csv('data.csv', header = None, names = ['Cust_Id', 'Rating', 'Movie_Id'], usecols = [0,2])
 
 print("training model...")
 
