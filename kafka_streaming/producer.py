@@ -45,13 +45,13 @@ try:
         producer.produce(
             TOPIC,
             key="netflix",
-            value=json.dumps(data),
+            value=id_user,
             on_delivery=acked
         )
         # p.poll() serves delivery reports (on_delivery)
         # from previous produce() calls thanks to acked callback
         producer.poll(0)
-        time.sleep(0.1)
+        time.sleep(12)
 except KeyboardInterrupt:
     pass
 finally:
