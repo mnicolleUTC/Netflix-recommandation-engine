@@ -1,4 +1,8 @@
 #Folder to avoid when committing
+#Avoid data loading into GITHUB
+preprocess/*.txt
+
+
 
 # Editors
 .vscode/
