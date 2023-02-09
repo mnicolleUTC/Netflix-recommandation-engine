@@ -1,6 +1,7 @@
 #Folder to avoid when committing
 #Avoid data loading into GITHUB
 preprocess/*.txt
+kafka_streaming/credentials.py
 
 
 
