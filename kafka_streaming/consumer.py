@@ -29,6 +29,7 @@ svd = pickle.load(open('model_p.sav', 'rb'))
 try:
     while True:
         msg = consumer.poll(1.0)
+        print(msg)
         if msg is None:
             print("Waiting for message or event/error in poll()")
             continue
@@ -44,6 +45,10 @@ try:
             user_pred = user_pred.reset_index()
             user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
             user_pred = user_pred.sort_values('Estimate_Score', ascending=False)
+            # Adding column User ID which always contain the same value which is user ID
+            user_pred["User_Id"] = int(record_value)
+            # Reorganize columns order
+            user_pred = user_pred[['User_Id','Movie_Id','Year','Name','Estimate_Score']]
             user_pred.to_csv('last.csv', index=False)
             aws_access_key_id = AWS_KEY_ID
             aws_secret_access_key = AWS_KEY_SECRET
@@ -52,6 +57,7 @@ try:
                 # Upload the file to S3
                 s3.upload_fileobj(f, "netflix-recommandation", "last_recommandation/last.csv")
             time.sleep(0.01)
+            print("success")
             
 except KeyboardInterrupt:
     pass
