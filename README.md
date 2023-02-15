@@ -1,5 +1,5 @@
-# Netflix-automation-engine
-Netflix automation engine for Jedha final project
+# Netflix-recommandation-engine
+Netflix recommandation engine for Jedha final project
 
 # How launch API
 Pre-requisite : Load credidentials.py in your kafka_streaming folder  

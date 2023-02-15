@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netflix recommandation engine</title>
+    <link rel="icon" href="netflix.png">
+    <style>
+		/* CSS styles for the image gallery */
+		.image {
+			display: inline-block;
+			width: 30%;
+			margin: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 5px #ccc;
+			vertical-align: top;
+		}
+		.image img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+		.annotation {
+			display: inline-block;
+			width: 30%;
+			margin: 10px;
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+	<h1>Suggested movies for User ID {{ user_id }}</h1>
+	<div>
+		<div class="image">
+			<img src="{{ posters[0] }}" alt="Image 1">
+		</div>
+		<div class="image">
+			<img src="{{ posters[1] }}" alt="Image 2">
+		</div>
+		<div class="image">
+			<img src={{ posters[2] }}" alt="Image 3">
+		</div>
+	</div>
+	<div>
+		<div class="annotation">
+			<h2>{{ movies[0] }}</h2>
+			<p> Prediction score = {{ scores[0] }}</p>
+		</div>
+		<div class="annotation">
+			<h2>{{ movies[1] }}</h2>
+			<p> Prediction score = {{ scores[1] }}</p>
+		</div>
+		<div class="annotation">
+			<h2>{{ movies[2] }}</h2>
+			<p> Prediction score = {{ scores[2] }}</p>
+		</div>
+	</div>
+    <form method="post">
+        <input type="submit" value="Update last predicted user">
+    </form>
+</body>
+</html>
