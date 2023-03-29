@@ -14,8 +14,11 @@ python producer.py
 Step 3 : Lauch consumer.py the other docker with following command :
 python consumer.py
 
-Step 4 : Consult https://api-netflix.herokuapp.com/load?rows=10
-Should be updated with last predictions
-
 Pay attention to number of running containers if kafka consumer and producer doesn't communicate.  
 It can be due to dual running containers.
+
+
+### Connect to aws web server hosting the flaskAPI
+1) Naviguate to ./Netflix-recommandation-engine/aws_server folder
+2) Get your Netflix-project.pem key in order to access EC2 server and copy it in current directory
+3) ssh -i Netflix-project.pem ubuntu@ip_adress

@@ -2,7 +2,8 @@
 #Avoid data loading into GITHUB
 preprocess/*.txt
 kafka_streaming/credentials.py
-
+kafka_streaming/last.csv
+aws_server/Netflix-project.pem
 
 
 # Editors
