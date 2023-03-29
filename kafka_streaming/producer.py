@@ -41,11 +41,13 @@ try:
         id_user = data["customerID"][0]
         print("Producing record - time: {0}\tUserID: {1}"\
             .format(time_extract, id_user))
+        # Convert integer id_user to bytes
+        id_user_bytes = id_user.to_bytes((id_user.bit_length() + 7) // 8, 'big')
         # This will actually send data to your topic
         producer.produce(
             TOPIC,
             key="netflix",
-            value=id_user,
+            value=id_user_bytes,
             on_delivery=acked
         )
         # p.poll() serves delivery reports (on_delivery)
