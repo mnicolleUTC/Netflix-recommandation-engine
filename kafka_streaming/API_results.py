@@ -13,7 +13,8 @@ def get_data_from_api():
     Returns:
         dict_value: Dictionnary containing values generated from the API.
     """
-    url = "https://fastapideta-1-a3617093.deta.app/"
+    url = "https://jedha-netflix-real-time-api.herokuapp.com/"\
+          "users-currently-watching-movie"
     response = requests.request("GET", url)
     str_dict_value = response.json()
     dict_value = json.loads(str_dict_value)

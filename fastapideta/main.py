@@ -41,14 +41,5 @@ async def look_prediction():
     best_movie = df.head(20)
     return best_movie.to_dict()
 
-"""
-@app.get("/load", tags=["Load"])
-async def load_reco(rows: int=10):
-
-    df = pd.read_csv("https://netflix-recommandation.s3.eu-west-3.amazonaws.com/last_recommandation/last.csv")
-    sample = df.sample(rows)
-    return sample.to_json()
-
-"""
 if __name__=="__main__":
     uvicorn.run(app, host="0.0.0.0", port=4000) # Here you define your web server to run the `app` variable (which contains FastAPI instance), with a specific host IP (0.0.0.0) and port (4000)

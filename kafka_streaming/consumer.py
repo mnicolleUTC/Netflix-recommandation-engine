@@ -3,9 +3,9 @@ import json
 import ccloud_lib
 import time
 import pandas as pd
-import os
-import pickle
+import numpy as np
 import boto3
+import pickle
 from credentials import AWS_KEY_ID
 from credentials import AWS_KEY_SECRET
 
@@ -24,12 +24,12 @@ df_title = pd.read_csv('movie_titles.csv', encoding = "ISO-8859-1", header = Non
 df_title.set_index('Movie_Id', inplace = True)
 
 # load recommendation model
-svd = pickle.load(open('model_p.sav', 'rb'))
+with open('model.pkl', 'rb') as f:
+    svd = pickle.load(f)
 
 try:
     while True:
         msg = consumer.poll(1.0)
-        print(msg)
         if msg is None:
             print("Waiting for message or event/error in poll()")
             continue
@@ -37,13 +37,18 @@ try:
             print('error: {}'.format(msg.error()))
         else:
             record_key = msg.key()
-            record_value = msg.value()
+            record_value_bytes = msg.value()
+            # Convert value to int
+            record_value = int.from_bytes(record_value_bytes, 'big')
             print(f"received value = {record_value}")
-            model_input = json.loads(record_value) # input to feed to model : a user ID
+            model_input = json.loads(str(record_value)) # input to feed to model : a user ID
             # Display the 10 most recommended movies for user :
             user_pred = df_title.copy() 
             user_pred = user_pred.reset_index()
-            user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
+            # No use of ML model due to low performance
+            #user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
+            # Use of uniform random function # No use of ML model   
+            user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: np.random.normal(2.5, 0.9))
             user_pred = user_pred.sort_values('Estimate_Score', ascending=False)
             # Adding column User ID which always contain the same value which is user ID
             user_pred["User_Id"] = int(record_value)
