@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 import json
+import random
 
 app = Flask(__name__)
 URL_FAST_API = 'https://fastapideta-1-a3617093.deta.app/'
@@ -31,7 +32,12 @@ def home():
             key = [x for x in fastapi_data['Name'].keys() if fastapi_data['Name'][x] == title][0]
             # Append predicted score
             predicted_score.append(round(fastapi_data['Estimate_Score'][key],2))
-
+    # Randomly choose movies from the list we create to diversify suggestion
+    selected_index = random.sample(list(range(len(movie_titles_available)-1)), 3)
+    posters = [posters[i] for i in selected_index]
+    movie_titles_available = [movie_titles_available[i] for i in selected_index]
+    predicted_score = [predicted_score[i] for i in selected_index]
+        
     # Render template with movie posters and form to fetch new movies
     return render_template('movies.html', posters=posters,\
                             movies = movie_titles_available,\
