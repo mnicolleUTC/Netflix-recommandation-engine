@@ -36,7 +36,7 @@ def create_dataframe_from_movie(extract,index_movie):
     print(df.head())
     return df
 
-if __name__ =="__main__":
+def concat_data():
     df_all = pd.DataFrame()
     list_file = [
         "combined_data_1.txt",
@@ -47,5 +47,32 @@ if __name__ =="__main__":
     for file in list_file:
         df_part = parse_df(file)
         df_all = pd.concat([df_all,df_part])
-        df_all.to_csv("data.csv")
-        
+        df_all.to_csv("data.csv",index=False)
+
+def filter_data():
+    df = pd.read_csv("data.csv")
+    f = ['count','mean']
+    df_movie_summary = df.groupby('Movie_Id')['Rating'].agg(f)
+    df_movie_summary.index = df_movie_summary.index.map(int)
+    movie_benchmark = round(df_movie_summary['count'].quantile(0.9),0)
+    drop_movie_list = df_movie_summary[df_movie_summary['count'] < movie_benchmark].index
+    print('Movie minimum times of review: {}'.format(movie_benchmark))
+    df_cust_summary = df.groupby('Cust_Id')['Rating'].agg(f)
+    df_cust_summary.index = df_cust_summary.index.map(int)
+    cust_benchmark = round(df_cust_summary['count'].quantile(0.9),0)
+    drop_cust_list = df_cust_summary[df_cust_summary['count'] < cust_benchmark].index
+    print('Customer minimum times of review: {}'.format(cust_benchmark))
+    print('Original Shape: {}'.format(df.shape))
+    df = df[~df['Movie_Id'].isin(drop_movie_list)]
+    df = df[~df['Cust_Id'].isin(drop_cust_list)]
+    print('After Trim Shape: {}'.format(df.shape))
+    df.to_csv("filtering.csv",index= False)
+    
+
+if __name__ =="__main__":
+    # To concatenate all data from Kaggle
+    # concat_data()
+    # To filter data for movies or viewers with to less rewiews 
+    filter_data()
+    
+    

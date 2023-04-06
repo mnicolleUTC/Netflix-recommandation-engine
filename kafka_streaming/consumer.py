@@ -24,8 +24,7 @@ df_title = pd.read_csv('movie_titles.csv', encoding = "ISO-8859-1", header = Non
 df_title.set_index('Movie_Id', inplace = True)
 
 # load recommendation model
-with open('model.pkl', 'rb') as f:
-    svd = pickle.load(f)
+_, svd = load("model.pkl")
 
 try:
     while True:
@@ -46,10 +45,7 @@ try:
             user_pred = df_title.copy() 
             user_pred = user_pred.reset_index()
             # No use of ML model due to low performance
-            #user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
-            # Use of uniform random function # No use of ML model   
-            user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: np.random.normal(2.5, 0.9))
-            user_pred = user_pred.sort_values('Estimate_Score', ascending=False)
+            user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
             # Adding column User ID which always contain the same value which is user ID
             user_pred["User_Id"] = int(record_value)
             # Reorganize columns order
