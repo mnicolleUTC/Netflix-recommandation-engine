@@ -24,7 +24,8 @@ df_title = pd.read_csv('movie_titles.csv', encoding = "ISO-8859-1", header = Non
 df_title.set_index('Movie_Id', inplace = True)
 
 # load recommendation model
-_, svd = load("model.pkl")
+with open('model.pkl', 'rb') as file:
+    svd = pickle.load(file)
 
 try:
     while True:
