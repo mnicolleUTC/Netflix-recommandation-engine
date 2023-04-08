@@ -19,7 +19,7 @@ def model_training():
     # Split data into train and test set
     trainset, testset = train_test_split(data, test_size=0.1)
 
-    # Create and train the SVD model with increased factors, epochs, and biases
+    # Create and train the SVD model with increased factors and epochs.
     model = SVD(n_factors= 150, n_epochs=20, random_state=42)
     model.fit(trainset)
 

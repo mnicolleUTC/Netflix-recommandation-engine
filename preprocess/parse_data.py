@@ -50,16 +50,17 @@ def concat_data():
         df_all.to_csv("data.csv",index=False)
 
 def filter_data():
-    df = pd.read_csv("data.csv")
+    df = pd.read_csv("data_all.csv")
     f = ['count','mean']
     df_movie_summary = df.groupby('Movie_Id')['Rating'].agg(f)
     df_movie_summary.index = df_movie_summary.index.map(int)
-    movie_benchmark = round(df_movie_summary['count'].quantile(0.9),0)
+    movie_benchmark = round(df_movie_summary['count'].quantile(0.7),0)
     drop_movie_list = df_movie_summary[df_movie_summary['count'] < movie_benchmark].index
     print('Movie minimum times of review: {}'.format(movie_benchmark))
     df_cust_summary = df.groupby('Cust_Id')['Rating'].agg(f)
     df_cust_summary.index = df_cust_summary.index.map(int)
-    cust_benchmark = round(df_cust_summary['count'].quantile(0.9),0)
+    cust_benchmark = round(df_cust_summary['count'].quantile(0.7),0)
+    print(cust_benchmark)
     drop_cust_list = df_cust_summary[df_cust_summary['count'] < cust_benchmark].index
     print('Customer minimum times of review: {}'.format(cust_benchmark))
     print('Original Shape: {}'.format(df.shape))
