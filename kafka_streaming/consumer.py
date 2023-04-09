@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import boto3
 import pickle
+import psycopg2
 from credentials import AWS_KEY_ID
 from credentials import AWS_KEY_SECRET
 
@@ -51,6 +52,22 @@ try:
             user_pred["User_Id"] = int(record_value)
             # Reorganize columns order
             user_pred = user_pred[['User_Id','Movie_Id','Year','Name','Estimate_Score']]
+            # Send data to database
+            conn = psycopg2.connect(
+                host="rogue.db.elephantsql.com",
+                database="wfkunnps",
+                user="wfkunnps",
+                password="n7fWE6yoKl5n-ebaOdbREu5hyZE7VLYo"
+            )
+            cur = conn.cursor()
+            db = user_pred.sort_values('Estimate_Score', ascending=False).head().reset_index()
+            db["data"]=tuple(zip(db["Name"],db["Estimate_Score"]))
+            query = (f'INSERT INTO movies ("User_ID", "Movie1", "Movie2", "Movie3", "Movie4", "Movie5") '
+            f'VALUES ({db["User_Id"][0]},{db["data"][0]},{db["data"][1]},{db["data"][2]},{db["data"][3]},{db["data"][4]});')
+            cur.execute(query)
+            cur.close()
+            conn.close()
+            # Send data to datalake
             user_pred.to_csv('last.csv', index=False)
             aws_access_key_id = AWS_KEY_ID
             aws_secret_access_key = AWS_KEY_SECRET
@@ -60,6 +77,7 @@ try:
                 s3.upload_fileobj(f, "netflix-recommandation", "last_recommandation/last.csv")
             time.sleep(0.01)
             print("success")
+            
             
 except KeyboardInterrupt:
     pass

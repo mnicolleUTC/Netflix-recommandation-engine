@@ -1,10 +1,12 @@
 ![Screenshot](jedhaXnetflix.png)
 # 🍿 Netflix-recommandation-engine 🍿
-This repository houses all resources related to the project presentation on the Netflix recommendation engine. The subject can be found at this address: https://app.jedha.co/course/final-projects-l/netflix-automation-engine-l
+This repository houses all resources related to the project presentation on the Netflix recommendation engine.
 <br>
+### 👉VIDEO LINK and other ressources 👈
 The presentation video can be accessed at this address: XXXXXX.<br>
 The presentation slides are available in the file Lead_project.pptx.<br>
 Resources, such as the model and training data hosted on Google Drive, can be found at this address: https://drive.google.com/drive/folders/1kdiqpdA-LNxtLTzqqtUPBkfLrpoDvmMJ?usp=sharing<br>
+The subject of the project can be found at this address: https://app.jedha.co/course/final-projects-l/netflix-automation-engine-l
 Below is a description of the content and purpose of each folder in this repository.<br>
 Thank you, Antoine (#Acts) for collaborating with me on the Kafka subject, Lucas (#Elwi-nc) for developing one of the API and hosting it on Heroku and Marie (#Marie-92) for the global help on the project.<br><br>
 For more information on this project, feel free to contact the repository owner on GitHub : mnicolleUTC.
@@ -28,6 +30,7 @@ This folder contains information related to model training. It includes the foll
 This is the folder containing the Kafka streaming process. Thanks you, Antoine Costes (#Acts), for your valuable collaboration on the Kafka subject.  It includes the following files:
 - API_results.py: A Python script that retrieves data from the Jedha API to generate 10 movies/users.
 ccloud.lib & python.config: Configuration files for the Kafka producer and consumer, enabling communication through Confluent, the fully managed, cloud-native event streaming platform powered by Apache Kafka.
+- command.sql : File that contains basic instructions in SQL to create the table and test it.
 - consumer.py: A Python script that receives the User's ID, produced by producer.py every 15 seconds.
 - Dockerfile: A personalized Docker image that installs GCC and Python dependencies on top of the Kafka-based image provided by Jedha. This corresponds to the build of the Docker image used during the presentation.
 - model.pkl: A pickle file containing the model used for movie predictions. This is a copy from the model_training folder.
