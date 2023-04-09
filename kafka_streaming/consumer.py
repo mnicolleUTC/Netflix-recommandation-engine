@@ -46,7 +46,7 @@ try:
             # Display the 10 most recommended movies for user :
             user_pred = df_title.copy() 
             user_pred = user_pred.reset_index()
-            # No use of ML model due to low performance
+            # Prediction done
             user_pred['Estimate_Score'] = user_pred['Movie_Id'].apply(lambda x: svd.predict(model_input, x).est)
             # Adding column User ID which always contain the same value which is user ID
             user_pred["User_Id"] = int(record_value)
