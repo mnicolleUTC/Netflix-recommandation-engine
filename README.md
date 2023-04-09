@@ -5,8 +5,11 @@ This repository houses all resources related to the project presentation on the 
 The presentation video can be accessed at this address: XXXXXX.<br>
 The presentation slides are available in the file Lead_project.pptx.<br>
 Resources, such as the model and training data hosted on Google Drive, can be found at this address: https://drive.google.com/drive/folders/1kdiqpdA-LNxtLTzqqtUPBkfLrpoDvmMJ?usp=sharing<br>
-Below is a description of the content and purpose of each folder in this repository.<br><br>
-For more information on this project, feel free to contact the repository owner on GitHub : mnicolleUTC.<br><br>
+Below is a description of the content and purpose of each folder in this repository.<br>
+Thank you, Antoine (#Acts) for collaborating with me on the Kafka subject, Lucas (#Elwi-nc) for developing one of the API and hosting it on Heroku and Marie (#Marie-92) for the global help on the project.<br><br>
+For more information on this project, feel free to contact the repository owner on GitHub : mnicolleUTC.
+
+<br><br>
 
 # ⚙️ Preprocess ⚙️ 
 This folder contains a script that concatenates data from Kaggle.<br>
@@ -22,7 +25,7 @@ This folder contains information related to model training. It includes the foll
 - train_svd.py: The Python script responsible for training the model.<br><br>
 
 # 📡 Kafka_streaming 📡 
-This is the folder containing the Kafka streaming process. It includes the following files:
+This is the folder containing the Kafka streaming process. Thanks you, Antoine Costes (#Acts), for your valuable collaboration on the Kafka subject.  It includes the following files:
 - API_results.py: A Python script that retrieves data from the Jedha API to generate 10 movies/users.
 ccloud.lib & python.config: Configuration files for the Kafka producer and consumer, enabling communication through Confluent, the fully managed, cloud-native event streaming platform powered by Apache Kafka.
 - consumer.py: A Python script that receives the User's ID, produced by producer.py every 15 seconds.
@@ -45,7 +48,7 @@ python consumer.py
 Note: Pay attention to the number of running containers if the Kafka consumer and producer do not communicate properly. This issue may arise from multiple running instances of either the producer or consumer containers.<br><br>
 
 # 🚀 FastAPIdeta 🚀
-This API hosts a JSON file that contains the suggested movies produced by the machine learning model. It was initially developed and hosted on Heroku, thanks to Lucas Laborde (#Elwi-nc). However, since the end of Heroku's free-tier version in December 2022, I decided to switch to the deta.space service (https://deta.space/), which is a personal computer in the cloud offering the same features as Heroku but completely free. The API is now accessible at https://fastapideta-1-a3617093.deta.app/<br>
+This API hosts a JSON file that contains the suggested movies produced by the machine learning model. It was initially developed and hosted on Heroku. However, since the end of Heroku's free-tier version in December 2022, I decided to switch to the deta.space service (https://deta.space/), which is a personal computer in the cloud offering the same features as Heroku but completely free. The API is now accessible at https://fastapideta-1-a3617093.deta.app/<br>
 The contents of the folder are as follows:
 - .deta: Configuration files for deta.space hosting.
 - main.py: A Python script based on the FastAPI framework that contains the code to display the JSON file with the suggested movies produced by the machine learning model.
