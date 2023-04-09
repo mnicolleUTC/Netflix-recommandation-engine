@@ -45,7 +45,7 @@ python consumer.py
 Note: Pay attention to the number of running containers if the Kafka consumer and producer do not communicate properly. This issue may arise from multiple running instances of either the producer or consumer containers.<br><br>
 
 # 🚀 FastAPIdeta 🚀
-This API hosts a JSON file that contains the suggested movies produced by the machine learning model. It was initially developed and hosted on Heroku, thanks to Lucas Laborde (#Elwi-nc). However, since the end of Heroku's free-tier version in December 2022, I decided to switch to the deta.space service (https://deta.space/), which is a personal computer in the cloud offering the same features as Heroku but completely free.<br>
+This API hosts a JSON file that contains the suggested movies produced by the machine learning model. It was initially developed and hosted on Heroku, thanks to Lucas Laborde (#Elwi-nc). However, since the end of Heroku's free-tier version in December 2022, I decided to switch to the deta.space service (https://deta.space/), which is a personal computer in the cloud offering the same features as Heroku but completely free. The API is now accessible at https://fastapideta-1-a3617093.deta.app/<br>
 The contents of the folder are as follows:
 - .deta: Configuration files for deta.space hosting.
 - main.py: A Python script based on the FastAPI framework that contains the code to display the JSON file with the suggested movies produced by the machine learning model.
