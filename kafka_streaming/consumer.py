@@ -62,7 +62,7 @@ try:
             cur = conn.cursor()
             db = user_pred.sort_values('Estimate_Score', ascending=False).head().reset_index()
             db["data"]=tuple(zip(db["Name"],db["Estimate_Score"]))
-            query = (f'INSERT INTO movies ("User_ID", "Movie1", "Movie2", "Movie3", "Movie4", "Movie5") '
+            query = (f'INSERT INTO netflix_prediction ("User_ID", "Movie1", "Movie2", "Movie3", "Movie4", "Movie5") '
             f'VALUES ({db["User_Id"][0]},{db["data"][0]},{db["data"][1]},{db["data"][2]},{db["data"][3]},{db["data"][4]});')
             cur.execute(query)
             cur.close()
