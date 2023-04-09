@@ -3,7 +3,7 @@
 This repository houses all resources related to the project presentation on the Netflix recommendation engine.
 <br>
 ### 👉VIDEO LINK and other ressources 👈
-The presentation video can be accessed at this address: XXXXXX.<br>
+The presentation video can be accessed at this address: https://share.vidyard.com/watch/LunBb1S5tEKpJRY6LMmB9j?<br>
 The presentation slides are available in the file Lead_project.pptx.<br>
 Resources, such as the model and training data hosted on Google Drive, can be found at this address: https://drive.google.com/drive/folders/1kdiqpdA-LNxtLTzqqtUPBkfLrpoDvmMJ?usp=sharing<br>
 The subject of the project can be found at this address: https://app.jedha.co/course/final-projects-l/netflix-automation-engine-l
