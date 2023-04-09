@@ -9,7 +9,7 @@ Resources, such as the model and training data hosted on Google Drive, can be fo
 The subject of the project can be found at this address: https://app.jedha.co/course/final-projects-l/netflix-automation-engine-l
 Below is a description of the content and purpose of each folder in this repository.<br>
 Thank you, Antoine (#Acts) for collaborating with me on the Kafka subject, Lucas (#Elwi-nc) for developing one of the API and hosting it on Heroku and Marie (#Marie-92) for the global help on the project.<br><br>
-For more information on this project, feel free to contact the repository owner on GitHub : mnicolleUTC.
+For more information on this project, feel free to contact the repository owner on GitHub : mnicolleUTC (mnicolle.utc@gmail.com)
 
 <br><br>
 
